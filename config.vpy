@@ -2,18 +2,10 @@
 
 from vapoursynth import core
 clip = video_in
-
-dst_fps = display_fps
-# Interpolating to fps higher than 60 is too CPU-expensive, smoothmotion can handle the rest.
-while (dst_fps > 60):
-    dst_fps /= 2
-
-# lets keep Interpolating not higher than 60fps
-while (dst_fps > 60):
-    dst_fps = 60
+dst_fps = 48
 
 # Skip interpolation for 60 Hz content
-if not (container_fps > 59):
+if not (container_fps > 47):
     src_fps_num = int(container_fps * 1e8)
     src_fps_den = int(1e8)
     dst_fps_num = int(dst_fps * 1e4)
